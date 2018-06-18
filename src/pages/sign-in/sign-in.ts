@@ -17,8 +17,17 @@ export class SignInPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  user = {};
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignInPage');
   }
 
+  doLogin(){
+
+  }
+
+  doRegister(){
+    
+  }
 }
