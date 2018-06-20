@@ -1,36 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { GoogleMaps, 
-         GoogleMap, 
-         GoogleMapsEvent,
-         GoogleMapOptions,
-         CameraPosition,
-         MarkerOptions,
-         Marker
-         } from '@ionic-native/google-maps';
-
+import { Geolocation } from '@ionic-native/geolocation';
+ 
+declare var google;
+ 
 @Component({
-  selector: 'page-home',
+  selector: 'home-page',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  map: GoogleMap;
-
-  constructor(public navCtrl: NavController) {}
-  
-  ionViewDidLoad() {
+ 
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+ 
+  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
+ 
+  }
+ 
+  ionViewDidLoad(){
     this.loadMap();
   }
-
-  loadMap() {
-
-    // Create a map after the view is ready and the native platform is ready.
-    this.map = GoogleMaps.create('map_canvas');
-
-    // No longer wait GoogleMapsEvent.MAP_READY event
-    // ( except you use map.getVisibleRegion() )
+ 
+  loadMap(){
+ 
+    this.geolocation.getCurrentPosition().then((position) => {
+ 
+      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+ 
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+ 
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+ 
+    }, (err) => {
+      console.log(err);
+    });
+ 
   }
-
-
+ 
 }
