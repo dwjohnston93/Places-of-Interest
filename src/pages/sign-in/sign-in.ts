@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AppUserProvider } from '../../providers/app-user/app-user';
+import { HomePage } from '../../pages/home/home';
+
 
 /**
  * Generated class for the SignInPage page.
@@ -14,20 +17,24 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SignInPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public _appUser: AppUserProvider) {
   }
 
   user = {};
+  newUser = {};
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignInPage');
   }
 
   doLogin(){
-
-  }
+    this._appUser.userLogin(this.user);
+    this.navCtrl.push(HomePage);
+    }
 
   doRegister(){
-    
+    console.log("doRegister with this.user:", this.newUser)
+    this._appUser.userRegister(this.newUser);
+    this.navCtrl.push(HomePage);
   }
 }

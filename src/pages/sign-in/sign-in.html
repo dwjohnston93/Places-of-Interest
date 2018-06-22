@@ -39,14 +39,20 @@
 
   <ion-list>
     <h2>New user? Sign up below: </h2>
+
+    <ion-item>
+        <ion-label stacked>First Name</ion-label>
+        <ion-input [(ngModel)]="newUser.firstName" type="string"></ion-input>
+    </ion-item>
+
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+      <ion-input [(ngModel)]="newUser.email" type="email"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label stacked>Password</ion-label>
-      <ion-input [(ngModel)]="user.password" type="password"></ion-input>
+      <ion-input [(ngModel)]="newUser.password" type="password"></ion-input>
     </ion-item>
   
     <button ion-button outline (click)="doRegister()"> Sign Up</button>
