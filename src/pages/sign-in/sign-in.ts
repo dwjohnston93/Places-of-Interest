@@ -28,8 +28,12 @@ export class SignInPage {
   }
 
   doLogin(){
-    this._appUser.userLogin(this.user);
-    this.navCtrl.push(HomePage);
+    this._appUser.userLogin(this.user)
+    .subscribe((data:any) => {
+      console.log("doLogin on sign-in.ts")
+      this.navCtrl.push(HomePage);
+      }, err => {console.log("login failed")});
+    
     }
 
   doRegister(){

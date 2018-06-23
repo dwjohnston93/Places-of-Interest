@@ -19,12 +19,13 @@ export class AppUserProvider {
   loginUrl: string = "/login?"
 
   userLogin(user){ 
-    this.http.post(this.baseUrl + this.loginUrl, user).subscribe((data:any) => {
-    }, err => {console.log("login failed")})
+    return this.http.post(this.baseUrl + this.loginUrl, user)
+      
   }
 
   userRegister(user){
-    this.http.post(this.baseUrl, user).subscribe((data:any) =>{
+    this.http.post(this.baseUrl, user)
+      .subscribe((data:any) =>{
       console.log("userRegister with data:", data); 
     }, err => {console.log("register failed")})
   }
