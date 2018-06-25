@@ -55,7 +55,13 @@ export class SignInPage {
 
   doRegister(){
     console.log("doRegister with this.user:", this.newUser)
-    this._appUser.userRegister(this.newUser);
-    this.navCtrl.push(HomePage);
+    this._appUser.userRegister(this.newUser)
+      .subscribe((data:any) => {
+        console.log("doRegister sign-in.ts");
+        this.navCtrl.push(HomePage);
+      }, err => {
+        this.showAlert("register failed");
+        console.log("register failed")
+      });
   }
 }

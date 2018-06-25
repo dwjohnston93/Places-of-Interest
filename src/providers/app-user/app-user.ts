@@ -20,14 +20,10 @@ export class AppUserProvider {
 
   userLogin(user){ 
     return this.http.post(this.baseUrl + this.loginUrl, user)
-      
   }
 
   userRegister(user){
-    this.http.post(this.baseUrl, user)
-      .subscribe((data:any) =>{
-      console.log("userRegister with data:", data); 
-    }, err => {console.log("register failed")})
+    return this.http.post(this.baseUrl, user)
   }
 
 }
