@@ -45,7 +45,7 @@ export class HomePage {
       service.nearbySearch({
         location: latLng,
         radius: 2000,
-        type: ['store']
+        type: ['restaurant']
       }, callback);
  
     }, (err) => {
@@ -73,7 +73,8 @@ export class HomePage {
     });
   
     google.maps.event.addListener(marker, 'click', _ => {
-      this.infowindow.setContent(place.name);
+      this.infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+        place.vicinity + '<br>' + '</div>')
       this.infowindow.open(this.map, marker);
     });
 }
