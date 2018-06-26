@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { ResultsProvider } from '../../providers/results/results'; 
  
 declare var google;
  
@@ -15,8 +15,10 @@ export class HomePage {
   map: any;
   infowindow: any;
  
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
- 
+  constructor(
+    public navCtrl: NavController, 
+    public geolocation: Geolocation,
+    public resultsProv: ResultsProvider) {
   }
  
   ionViewDidLoad(){
@@ -51,6 +53,8 @@ export class HomePage {
       });
      
       function callback(results, status) {
+        that.resultsProv.resultsList = results; 
+        console.log(that.resultsProv.resultsList, "resultsList on home")
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             that.createMarker(results[i]);

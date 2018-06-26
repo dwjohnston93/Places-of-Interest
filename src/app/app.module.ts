@@ -12,6 +12,7 @@ import { SignInPage } from '../pages/sign-in/sign-in';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppUserProvider } from '../providers/app-user/app-user';
+import { ResultsProvider } from '../providers/results/results';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AppUserProvider } from '../providers/app-user/app-user';
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AppUserProvider,
-    HomePage
+    HomePage,
+    ResultsProvider
   ]
 })
 export class AppModule {}
