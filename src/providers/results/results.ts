@@ -12,8 +12,6 @@ import { Injectable } from '@angular/core';
 export class ResultsProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello ResultsProvider Provider');
-    console.log("resultsList", this.resultsList)
   }
 
   resultsList: any

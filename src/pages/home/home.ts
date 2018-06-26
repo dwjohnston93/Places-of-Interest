@@ -54,7 +54,7 @@ export class HomePage {
      
       function callback(results, status) {
         that.resultsProv.resultsList = results; 
-        console.log(that.resultsProv.resultsList, "resultsList on home")
+        console.log(results); 
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             that.createMarker(results[i]);

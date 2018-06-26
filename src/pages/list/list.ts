@@ -13,4 +13,15 @@ export class ListPage {
     public navParams: NavParams,
     public resultsProv: ResultsProvider) {} 
 
+  ionViewDidLoad(){
+    this.orderList(this.resultsProv.resultsList);
+  }
+  
+  orderList(list){
+    list.sort(function (a, b) {
+    return b.rating - a.rating;
+    }) 
+  } 
+    
+
 } 
