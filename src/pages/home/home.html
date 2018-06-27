@@ -1,17 +1,30 @@
 <ion-header>
-        <ion-navbar>
-         <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>   
-         </button>
-          <ion-title>
-            Map
-          </ion-title>
-          <ion-buttons end>
-            <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
-          </ion-buttons> 
-        </ion-navbar>
-      </ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>   
+    </button>
+    <ion-title>
+      Map
+    </ion-title>
+    <button>
+      <ion-icon name="search" (click)="loadMap()">Search</ion-icon>
+    </button>           
+  </ion-navbar>
+</ion-header>
        
       <ion-content>
+          <ion-list>
+              <ion-item>
+                <ion-label>Search for</ion-label>
+                <ion-select [(ngModel)]="search">
+                  <ion-option value="atm">atm</ion-option>
+                  <ion-option value="cafe">cafe</ion-option>
+                  <ion-option value="church">church</ion-option>
+                  <ion-option value="gym">gym</ion-option>
+                  <ion-option value="liquor-store">liquor-store</ion-option>
+                  <ion-option value="restaurant">restaurant</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-list> 
         <div #map id="map"></div> 
       </ion-content>

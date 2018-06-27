@@ -14,6 +14,7 @@ export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   infowindow: any;
+  search: any; 
  
   constructor(
     public navCtrl: NavController, 
@@ -45,7 +46,7 @@ export class HomePage {
       service.nearbySearch({
         location: latLng,
         radius: 2000,
-        type: ['restaurant']
+        type: [this.search]
       }, callback);
  
     }, (err) => {
