@@ -6,9 +6,12 @@
     <ion-title>
       Map
     </ion-title>
-    <button>
-      <ion-icon name="search" (click)="loadMap()">Search</ion-icon>
-    </button>           
+    <ion-buttons end>
+      <button (click)="loadMap()">
+       <ion-icon name="search"></ion-icon>
+        New Search
+      </button>
+    </ion-buttons>           
   </ion-navbar>
 </ion-header>
        
@@ -21,8 +24,11 @@
                   <ion-option value="cafe">cafe</ion-option>
                   <ion-option value="church">church</ion-option>
                   <ion-option value="gym">gym</ion-option>
+                  <ion-option value="hospital">hospital</ion-option>
                   <ion-option value="liquor-store">liquor-store</ion-option>
                   <ion-option value="restaurant">restaurant</ion-option>
+                  <ion-option value="store">store</ion-option>
+                  <ion-option value="supermarket">supermarket</ion-option>
                 </ion-select>
               </ion-item>
             </ion-list> 
