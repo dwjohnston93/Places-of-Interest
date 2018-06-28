@@ -45,7 +45,7 @@ export class SignInPage {
     this._appUser.userLogin(this.user)
     .subscribe((data:any) => {
       console.log("doLogin on sign-in.ts")
-      this.navCtrl.push(HomePage);
+      this.navCtrl.setRoot(HomePage);
       }, err => {
         this.showAlert("login failed");
         console.log("login failed")
@@ -58,7 +58,7 @@ export class SignInPage {
     this._appUser.userRegister(this.newUser)
       .subscribe((data:any) => {
         console.log("doRegister sign-in.ts");
-        this.navCtrl.push(HomePage);
+        this.navCtrl.setRoot(HomePage);
       }, err => {
         this.showAlert("register failed");
         console.log("register failed")
