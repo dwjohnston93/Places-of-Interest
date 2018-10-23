@@ -27,43 +27,38 @@ export class SignInPage {
 
   user = {};
   newUser = {};
-  loggedIn: boolean = false; 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignInPage')
   }
 
-  showAlert(param) {   
-    const alert = this.alertCtrl.create({
-      title: param,
-      subTitle: '',
-      buttons: ['OK']
-    });
-    alert.present();
-}
+  // doLogin(){
+  //   this._appUser.userLogin(this.user)
+  //   .subscribe((data:any) => {
+  //     console.log("doLogin on sign-in.ts")
+  //     this.loggedIn = true;
+  //     this.navCtrl.setRoot(HomePage);
+  //     }, err => {
+  //       this.showAlert("login failed");
+  //       console.log("login failed")
+  //     });
+    
+  //   }
 
   doLogin(){
     this._appUser.userLogin(this.user)
-    .subscribe((data:any) => {
-      console.log("doLogin on sign-in.ts")
-      this.loggedIn = true;
-      this.navCtrl.setRoot(HomePage);
-      }, err => {
-        this.showAlert("login failed");
-        console.log("login failed")
-      });
-    
-    }
+    this.navCtrl.setRoot(HomePage);
+  }
 
   doRegister(){
     console.log("doRegister with this.user:", this.newUser)
     this._appUser.userRegister(this.newUser)
       .subscribe((data:any) => {
-        console.log("doRegister sign-in.ts");
-        this.loggedIn = true;
+        // this.loggedIn = true;
         this.navCtrl.setRoot(HomePage);
+        console.log("doRegister sign-in.ts");
       }, err => {
-        this.showAlert("register failed");
+        // this.showAlert("register failed");
         console.log("register failed")
       });
   }

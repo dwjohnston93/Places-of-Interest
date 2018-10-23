@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -26,7 +27,8 @@ import { ResultsProvider } from '../providers/results/results';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +45,8 @@ import { ResultsProvider } from '../providers/results/results';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AppUserProvider,
     HomePage,
-    ResultsProvider
+    ResultsProvider,
+    HttpModule
   ]
 })
 export class AppModule {}
