@@ -27,6 +27,7 @@ export class SignInPage {
 
   user = {};
   newUser = {};
+  loggedIn: boolean = false; 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignInPage')
@@ -45,6 +46,7 @@ export class SignInPage {
     this._appUser.userLogin(this.user)
     .subscribe((data:any) => {
       console.log("doLogin on sign-in.ts")
+      this.loggedIn = true;
       this.navCtrl.setRoot(HomePage);
       }, err => {
         this.showAlert("login failed");
@@ -58,6 +60,7 @@ export class SignInPage {
     this._appUser.userRegister(this.newUser)
       .subscribe((data:any) => {
         console.log("doRegister sign-in.ts");
+        this.loggedIn = true;
         this.navCtrl.setRoot(HomePage);
       }, err => {
         this.showAlert("register failed");

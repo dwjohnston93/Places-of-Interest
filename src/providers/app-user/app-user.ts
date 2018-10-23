@@ -26,4 +26,8 @@ export class AppUserProvider {
     return this.http.post(this.baseUrl, user)
   }
 
+  userLogout(user){
+    
+  }
+
 }
