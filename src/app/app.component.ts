@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignInPage } from '../pages/sign-in/sign-in';
 import { AppUserProvider } from '../providers/app-user/app-user';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,6 +24,7 @@ export class MyApp {
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
     public _appUser: AppUserProvider,
+    public alertCtrl: AlertController
   ) {
 
     this.initializeApp();
@@ -32,7 +34,6 @@ export class MyApp {
       { title: 'Sign In', component: SignInPage},
       { title: 'Map', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Sign Out', component: null}
     ];
 
   }
@@ -53,5 +54,29 @@ export class MyApp {
       
       this.nav.setRoot(HomePage);
     } 
+  }
+
+  //confirmation alert to confirm user wants to sign out
+  showConfirm() {
+    const confirm = this.alertCtrl.create({
+      title: 'Sign Out',
+      message: 'Are you sure you want to sign out?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('No clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this._appUser.userLogout("user")
+            console.log('Yes clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

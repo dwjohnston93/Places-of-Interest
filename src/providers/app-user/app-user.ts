@@ -21,8 +21,10 @@ export class AppUserProvider {
 
   loggedIn: boolean = false; 
   userInfo: any; 
-  baseUrl: string = "http://localhost:3000/api/appUsers/"; 
-  loginUrl: string = "login?include=user"
+  baseURL: string = "http://localhost:3000/api/appUsers/"; 
+  loginURL: string = "login?include=user"
+  logoutURL
+  token: any = sessionStorage.getItem("token"); 
 
   showAlert(param) {   
     const alert = this.alertCtrl.create({
@@ -34,8 +36,9 @@ export class AppUserProvider {
   }
 
   userLogin(user){ 
-     this.http.post(this.baseUrl + this.loginUrl, user).subscribe( (data:any) => {
+     this.http.post(this.baseURL + this.loginURL, user).subscribe( (data:any) => {
         this.loggedIn = true; 
+        sessionStorage.setItem('token', data.token);
         sessionStorage.setItem('userId', data.userId);
         this.userInfo = data; 
         console.log("userInfo", this.userInfo);
@@ -47,11 +50,12 @@ export class AppUserProvider {
   }
 
   userRegister(user){
-    return this.http.post(this.baseUrl, user)
+    return this.http.post(this.baseURL, user)
   }
 
   userLogout(user){
-    
+    this.loggedIn = false; 
+    return this.http.post(this.baseURL + this.logoutURL + this.token, user)
   }
 
 }

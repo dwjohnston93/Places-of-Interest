@@ -9,7 +9,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignInPage } from '../pages/sign-in/sign-in';
-import { LogoutPage } from '../pages/logout/logout'; 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,8 +20,7 @@ import { ResultsProvider } from '../providers/results/results';
     MyApp,
     HomePage,
     ListPage,
-    SignInPage,
-    LogoutPage
+    SignInPage
   ],
   imports: [
     BrowserModule,
@@ -35,8 +33,7 @@ import { ResultsProvider } from '../providers/results/results';
     MyApp,
     HomePage,
     ListPage,
-    SignInPage,
-    LogoutPage
+    SignInPage
   ],
   providers: [
     StatusBar,
