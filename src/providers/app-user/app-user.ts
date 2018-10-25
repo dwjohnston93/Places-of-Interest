@@ -21,8 +21,8 @@ export class AppUserProvider {
 
   loggedIn: boolean = false; 
   userInfo: any; 
-  baseUrl: string = "http://localhost:3000/api/appUsers"; 
-  loginUrl: string = "/login?"
+  baseUrl: string = "http://localhost:3000/api/appUsers/"; 
+  loginUrl: string = "login?include=user"
 
   showAlert(param) {   
     const alert = this.alertCtrl.create({
