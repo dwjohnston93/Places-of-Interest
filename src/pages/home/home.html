@@ -7,30 +7,14 @@
       Map
     </ion-title>
     <ion-buttons end>
-      <button (click)="loadMap()">
+      <button (click)="openActionSheet()">
        <ion-icon name="search"></ion-icon>
-        New Search
+        Search
       </button>
     </ion-buttons>           
   </ion-navbar>
 </ion-header>
        
       <ion-content>
-          <ion-list>
-              <ion-item>
-                <ion-label>Search for</ion-label>
-                <ion-select [(ngModel)]="search">
-                  <ion-option>atm</ion-option>
-                  <ion-option>cafe</ion-option>
-                  <ion-option>church</ion-option>
-                  <ion-option>gym</ion-option>
-                  <ion-option>hospital</ion-option>
-                  <ion-option>liquor-store</ion-option>
-                  <ion-option>restaurant</ion-option>
-                  <ion-option>store</ion-option>
-                  <ion-option>supermarket</ion-option>
-                </ion-select>
-              </ion-item>
-            </ion-list> 
         <div #map id="map"></div> 
       </ion-content>

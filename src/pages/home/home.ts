@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ActionSheetController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ResultsProvider } from '../../providers/results/results'; 
  
@@ -19,8 +19,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController, 
     public geolocation: Geolocation,
-    public resultsProv: ResultsProvider) {
-  }
+    public resultsProv: ResultsProvider,
+    public actionSheetCtrl: ActionSheetController) {}
  
   ionViewDidLoad(){
     this.loadMap();
@@ -105,5 +105,118 @@ export class HomePage {
     this.addInfoWindow(marker, content);
    
   }
- 
+
+  //selection menu for nearby search
+  openActionSheet() {
+    console.log("openActionSheet")
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Search By Type',
+      buttons: [
+        {
+          text: 'ATM',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'atm';
+            this.loadMap(); 
+          }
+        },
+        {
+          text: 'Bank',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'bank';
+            this.loadMap(); 
+          }
+        },
+        {
+          text: 'Bar',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'bar';
+            this.loadMap();
+          }
+        }, 
+        {
+          text: 'Cafe',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'cafe';
+            this.loadMap();
+          }
+        }, 
+        {
+          text: 'Church',
+          role: 'destructive',
+          handler: () => {
+            console.log('church clicked');
+            this.search = 'church';
+            this.loadMap();
+          }
+        },
+        {
+          text: 'Gas Station',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'gas_station';
+            this.loadMap();
+          }
+        },
+        {
+          text: 'Hospital',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'hospital';
+            this.loadMap();
+          }
+        },
+        {
+          text: 'Liquor Store',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'liquor_store';
+            this.loadMap();
+          }
+        },
+        {
+          text: 'Movie Theater',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'movie_theater';
+            this.loadMap();
+          }
+        },
+        {
+          text: 'Museum',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'museum';
+            this.loadMap();
+          }
+        },
+        {
+          text: 'Restaurant',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'restaurant';
+            this.loadMap();
+          }
+        },
+        {
+          text: 'Supermarket',
+          role: 'destructive',
+          handler: () => {
+            this.search = 'supermarket';
+            this.loadMap();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    }); actionSheet.present();
+  }  
 }
