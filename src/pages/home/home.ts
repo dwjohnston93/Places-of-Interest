@@ -111,7 +111,7 @@ export class HomePage {
     console.log("openActionSheet")
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Search By Type',
-      buttons: [
+      buttons: [    
         {
           text: 'ATM',
           role: 'destructive',

@@ -25,41 +25,23 @@ export class SignInPage {
     public alertCtrl: AlertController
   ) {}
 
-  user = {};
-  newUser = {};
+  user = {};  
+  newUser = {firstName: "blank"};
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignInPage')
   }
 
-  // doLogin(){
-  //   this._appUser.userLogin(this.user)
-  //   .subscribe((data:any) => {
-  //     console.log("doLogin on sign-in.ts")
-  //     this.loggedIn = true;
-  //     this.navCtrl.setRoot(HomePage);
-  //     }, err => {
-  //       this.showAlert("login failed");
-  //       console.log("login failed")
-  //     });
-    
-  //   }
-
   doLogin(){
-    this._appUser.userLogin(this.user)
+    this._appUser.userLogin(this.user);
     this.navCtrl.setRoot(HomePage);
   }
 
   doRegister(){
-    console.log("doRegister with this.user:", this.newUser)
-    this._appUser.userRegister(this.newUser)
-      .subscribe((data:any) => {
-        // this.loggedIn = true;
-        this.navCtrl.setRoot(HomePage);
-        console.log("doRegister sign-in.ts");
-      }, err => {
-        // this.showAlert("register failed");
-        console.log("register failed")
-      });
+    console.log(this.newUser.firstName, "tnufN");
+    if(this.newUser.firstName){
+    this._appUser.userRegister(this.newUser, this.newUser.firstName);
+    this.navCtrl.setRoot(HomePage);
+    } 
   }
-}
+} 

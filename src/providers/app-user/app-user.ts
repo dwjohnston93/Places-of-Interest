@@ -20,10 +20,12 @@ export class AppUserProvider {
   }
 
   loggedIn: boolean = false; 
-  userInfo: any; 
-  baseURL: string = "http://localhost:3000/api/appUsers/"; 
-  loginURL: string = "login?include=user"
-  logoutURL
+  newUser: boolean = false; 
+  userInfo: any;
+  baseURL: string = "http://localhost:3000/api/appUsers"; 
+  loginURL: string = "/login?include=user"
+  logoutURL: string = "/logout"
+  userFirstName: string;
   token: any = sessionStorage.getItem("token"); 
 
   showAlert(param) {   
@@ -49,12 +51,25 @@ export class AppUserProvider {
       });
   }
 
-  userRegister(user){
-    return this.http.post(this.baseURL, user)
-  }
+  userRegister(user, firstName){
+    this.http.post(this.baseURL, user).subscribe( (data:any) => {
+      sessionStorage.setItem('id', data.id);
+      sessionStorage.setItem('token', data.token);
+      this.userFirstName = firstName; 
+      console.log("firstName", firstName);
+      this.newUser = true; 
+      console.log("data", data); 
+      console.log("data.id", data.id);
+     }, err => {
+      this.showAlert("Register Failed")
+    })
 
+  };
+ 
   userLogout(user){
     this.loggedIn = false; 
+    this.newUser = false; 
+    sessionStorage.clear();  
     return this.http.post(this.baseURL + this.logoutURL + this.token, user)
   }
 
