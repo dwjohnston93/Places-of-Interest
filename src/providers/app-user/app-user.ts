@@ -51,14 +51,14 @@ export class AppUserProvider {
       });
   }
 
-  userRegister(user, firstName){
+  userRegister(user){
     this.http.post(this.baseURL, user).subscribe( (data:any) => {
       sessionStorage.setItem('id', data.id);
       sessionStorage.setItem('token', data.token);
-      this.userFirstName = firstName; 
-      console.log("firstName", firstName);
+      this.userFirstName = data.firstName; 
       this.newUser = true; 
       console.log("data", data); 
+      console.log("data.firstName", data.firstName);
       console.log("data.id", data.id);
      }, err => {
       this.showAlert("Register Failed")

@@ -26,7 +26,7 @@ export class SignInPage {
   ) {}
 
   user = {};  
-  newUser = {firstName: "blank"};
+  newUser = {};
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignInPage')
@@ -38,10 +38,7 @@ export class SignInPage {
   }
 
   doRegister(){
-    console.log(this.newUser.firstName, "tnufN");
-    if(this.newUser.firstName){
-    this._appUser.userRegister(this.newUser, this.newUser.firstName);
+    this._appUser.userRegister(this.newUser);
     this.navCtrl.setRoot(HomePage);
-    } 
   }
 } 
