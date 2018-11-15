@@ -1,6 +1,6 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar id="sidemenu">
       <ion-title *ngIf="_appUser.loggedIn; else second">Hello, {{_appUser.userInfo.user.firstName}}</ion-title>
       <ng-template #second>
         <ng-container *ngIf="_appUser.newUser; else notLoggedIn"> Hello, {{_appUser.userFirstName}}</ng-container>
