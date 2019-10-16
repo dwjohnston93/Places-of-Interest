@@ -14,12 +14,6 @@ npm install -g ionic
 ```
 ### Installing
 
-Clone the remote repository
-
-```
-git clone https://github.com/dwjohnston93/Places-of-Interest
-```
-
 From within the `Places-of-Interest` directory, run `npm install` to install all dependencies.
 
 ```
