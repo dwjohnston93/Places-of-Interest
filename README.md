@@ -32,7 +32,7 @@ Once that completes, use `ionic serve` to get a local copy running
 ionic serve
 ```
 
-This should deploy the an instance of the app running locally at:
+This should deploy an instance of the app running locally at:
 
 ```
 http://localhost:8100/
@@ -44,6 +44,14 @@ http://localhost:8100/
 * [MongoDB](https://www.mongodb.com/)
 * [Loopback](http://loopback.io/)
 * [Google Maps API](https://developers.google.com/maps/documentation)
+
+## Author
+
+* Daniel Johnston - [dwjohnston93](https://github.com/dwjohnston93)
+
+## Acknowledgments
+
+* Josh Morony Ionic guides
 
 ## License
 
